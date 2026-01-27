@@ -9,18 +9,14 @@
   
   --color-accent-gold: #d4af37;
   --color-accent-sand: #f5f5dc;
-
-  --background-image-noise: url('/noise.png');
 }
 
-body {
-  @apply bg-primary-900 text-gray-200 font-sans antialiased;
-}
+@layer base {
+  body {
+    @apply bg-primary-900 text-slate-300 font-sans antialiased;
+  }
 
-h1, h2, h3, h4, h5, h6 {
-  @apply font-serif;
-}
-
-::selection {
-  @apply bg-accent-gold text-primary-900;
+  h1, h2, h3, h4 {
+    @apply font-serif text-white font-normal;
+  }
 }

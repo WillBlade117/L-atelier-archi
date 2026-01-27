@@ -1,0 +1,79 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact | L'Atelier">
+  <main class="pt-40 pb-24 min-h-screen">
+    <div class="max-w-screen-xl mx-auto px-6 md:px-12">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-24">
+        
+        <div>
+          <h1 class="text-6xl md:text-8xl font-serif mb-12">Parlons de votre <span class="text-accent-gold italic">projet</span>.</h1>
+          
+          <div class="space-y-12">
+            <div>
+              <h2 class="text-accent-gold uppercase tracking-widest text-xs font-bold mb-4">Notre Studio</h2>
+              <p class="text-xl text-white font-light leading-relaxed">
+                12 Rue de la Renaissance<br />
+                75008 Paris, France
+              </p>
+            </div>
+
+            <div>
+              <h2 class="text-accent-gold uppercase tracking-widest text-xs font-bold mb-4">Contact Direct</h2>
+              <p class="text-xl text-white font-light leading-relaxed">
+                contact@latelier-archi.fr<br />
+                +33 (0)1 42 65 00 00
+              </p>
+            </div>
+
+            <div>
+              <h2 class="text-accent-gold uppercase tracking-widest text-xs font-bold mb-4">Suivez-nous</h2>
+              <div class="flex gap-6 mt-4">
+                <a href="#" class="text-white hover:text-accent-gold transition-colors italic font-serif">Instagram</a>
+                <a href="#" class="text-white hover:text-accent-gold transition-colors italic font-serif">Pinterest</a>
+                <a href="#" class="text-white hover:text-accent-gold transition-colors italic font-serif">LinkedIn</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-primary-800 p-8 md:p-12 shadow-2xl border border-white/5">
+          <form action="#" method="POST" class="space-y-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div class="flex flex-col">
+                <label for="name" class="text-xs uppercase tracking-widest text-gray-500 mb-2">Nom Complet</label>
+                <input type="text" id="name" name="name" class="bg-transparent border-b border-white/20 py-2 focus:border-accent-gold outline-none transition-colors text-white" placeholder="Jean Dupont" />
+              </div>
+              <div class="flex flex-col">
+                <label for="email" class="text-xs uppercase tracking-widest text-gray-500 mb-2">Email</label>
+                <input type="email" id="email" name="email" class="bg-transparent border-b border-white/20 py-2 focus:border-accent-gold outline-none transition-colors text-white" placeholder="jean@exemple.fr" />
+              </div>
+            </div>
+
+            <div class="flex flex-col">
+                <label for="subject" class="text-xs uppercase tracking-widest text-gray-500 mb-2">Type de projet</label>
+                <select id="subject" name="subject" class="bg-transparent border-b border-white/20 py-2 focus:border-accent-gold outline-none transition-colors text-white appearance-none cursor-pointer">
+                    <option class="bg-primary-800">Rénovation Complète</option>
+                    <option class="bg-primary-800">Architecture d'Intérieur</option>
+                    <option class="bg-primary-800">Conseil Déco</option>
+                    <option class="bg-primary-800">Autre</option>
+                </select>
+            </div>
+
+            <div class="flex flex-col">
+              <label for="message" class="text-xs uppercase tracking-widest text-gray-500 mb-2">Votre Message</label>
+              <textarea id="message" name="message" rows="4" class="bg-transparent border-b border-white/20 py-2 focus:border-accent-gold outline-none transition-colors text-white resize-none" placeholder="Décrivez brièvement votre projet..."></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-4 bg-accent-gold text-primary-900 font-bold uppercase tracking-[0.2em] text-sm hover:bg-white transition-all duration-300">
+                Envoyer la demande
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </main>
+</Layout>

@@ -1,0 +1,93 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  beforeImage: ImageMetadata;
+  afterImage: ImageMetadata;
+  altText?: string;
+}
+
+const { beforeImage, afterImage, altText = "Comparaison avant après" } = Astro.props;
+---
+
+<div class="relative w-full max-w-5xl mx-auto aspect-video overflow-hidden rounded-lg shadow-2xl select-none group">
+  
+  <Image 
+    src={afterImage} 
+    alt={`Après - ${altText}`} 
+    class="absolute inset-0 w-full h-full object-cover"
+  />
+
+  <div class="absolute inset-0 w-full h-full" id="before-container">
+    <Image 
+        src={beforeImage} 
+        alt={`Avant - ${altText}`} 
+        class="absolute inset-0 w-full h-full object-cover"
+    />
+    
+    <span class="absolute bottom-4 left-4 bg-black/60 text-white px-3 py-1 text-sm font-bold tracking-widest backdrop-blur-sm rounded">
+        AVANT
+    </span>
+  </div>
+
+  <span class="absolute bottom-4 right-4 bg-accent-gold/90 text-primary-900 px-3 py-1 text-sm font-bold tracking-widest backdrop-blur-sm rounded z-0">
+    APRÈS
+  </span>
+
+  <div id="slider-handle" class="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize z-20 shadow-[0_0_10px_rgba(0,0,0,0.5)]">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg">
+      <svg class="w-4 h-4 text-primary-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" transform="rotate(90 12 12)" />
+      </svg>
+    </div>
+  </div>
+
+  <input 
+    type="range" 
+    min="0" 
+    max="100" 
+    value="50" 
+    class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-30"
+    id="slider-input"
+    aria-label="Contrôle de comparaison avant après"
+  />
+
+</div>
+
+<script>
+  // Logique pure JS pour la performance
+  // On utilise customElements ou juste un script qui cible les sliders
+  
+  const setupSliders = () => {
+    const inputs = document.querySelectorAll('#slider-input');
+    
+    inputs.forEach(input => {
+      // On remonte au parent pour trouver les éléments frères
+      const container = input.closest('div'); 
+      const beforeContainer = container?.querySelector('#before-container') as HTMLElement;
+      const handle = container?.querySelector('#slider-handle') as HTMLElement;
+
+      if(input && beforeContainer && handle) {
+        input.addEventListener('input', (e) => {
+          const value = (e.target as HTMLInputElement).value;
+          
+          // On change la découpe de l'image AVANT
+          beforeContainer.style.clipPath = `polygon(0 0, ${value}% 0, ${value}% 100%, 0 100%)`;
+          
+          // On bouge la ligne blanche
+          handle.style.left = `${value}%`;
+        });
+
+        // Initialisation à 50%
+        beforeContainer.style.clipPath = `polygon(0 0, 50% 0, 50% 100%, 0 100%)`;
+        handle.style.left = `50%`;
+      }
+    });
+  };
+
+  // On lance au chargement
+  setupSliders();
+  
+  // Compatible avec les transitions de page Astro (View Transitions) si je les actives un jour
+  document.addEventListener('astro:page-load', setupSliders);
+</script>

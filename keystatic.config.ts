@@ -48,10 +48,36 @@ export default config({
 
         // 3. Gestion des Images
         coverImage: fields.image({
-            label: 'Image de couverture',
+            label: 'Image de couverture (Grille)',
             directory: 'src/assets/projects', 
-            publicPath: '../../assets/projects', // Chemin relatif pour le fichier Markdown
+            publicPath: '../../assets/projects',
         }),
+
+        beforeImage: fields.image({
+            label: 'Image AVANT (Slider)',
+            description: 'Image du chantier avant travaux',
+            directory: 'src/assets/projects', 
+            publicPath: '../../assets/projects',
+        }),
+
+        afterImage: fields.image({
+            label: 'Image APRÈS (Slider)',
+            description: 'Image du chantier après travaux',
+            directory: 'src/assets/projects', 
+            publicPath: '../../assets/projects',
+        }),
+
+        gallery: fields.array(
+            fields.image({
+                label: 'Image',
+                directory: 'src/assets/projects',
+                publicPath: '../../assets/projects',
+            }),
+            {
+                label: 'Galerie Photos',
+                itemLabel: (props) => props.value ? 'Photo additionnelle' : 'Nouvelle photo',
+            }
+        ),
 
         // 4. Contenu Riche (L'histoire du projet)
         content: fields.document({

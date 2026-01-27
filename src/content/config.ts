@@ -15,6 +15,7 @@ const projectsCollection = defineCollection({
     coverImage: image(), 
     beforeImage: image().optional(),
     afterImage: image().optional(),
+    gallery: z.array(image()).optional(),
   }),
 });
 

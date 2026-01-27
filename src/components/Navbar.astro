@@ -1,0 +1,49 @@
+---
+
+---
+
+<nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-6 px-6 md:px-12">
+    <div class="max-w-screen-2xl mx-auto flex justify-between items-center">
+        
+        <a href="/" class="group">
+            <span class="text-2xl font-serif font-bold text-white tracking-tighter">
+                L'ATELIER<span class="text-accent-gold group-hover:text-white transition-colors">.</span>
+            </span>
+        </a>
+
+        <div class="hidden md:flex items-center gap-10">
+            <a href="/" class="text-sm uppercase tracking-widest text-white hover:text-accent-gold transition-colors font-sans">Accueil</a>
+            <a href="/projets" class="text-sm uppercase tracking-widest text-white hover:text-accent-gold transition-colors font-sans">Réalisations</a>
+            <a href="/agence" class="text-sm uppercase tracking-widest text-white hover:text-accent-gold transition-colors font-sans">L'Agence</a>
+            <a href="/contact" class="px-6 py-3 border border-accent-gold text-accent-gold hover:bg-accent-gold hover:text-primary-900 transition-all duration-300 text-xs uppercase tracking-widest font-bold">
+                Contact
+            </a>
+        </div>
+
+        <button class="md:hidden text-white">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+    </div>
+</nav>
+
+<script>
+    const initNavbar = () => {
+        const nav = document.getElementById('navbar');
+
+        if (nav) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    nav.classList.add('bg-primary-900/95', 'backdrop-blur-md', 'py-4', 'shadow-xl');
+                    nav.classList.remove('py-6');
+                } else {
+                    nav.classList.remove('bg-primary-900/95', 'backdrop-blur-md', 'py-4', 'shadow-xl');
+                    nav.classList.add('py-6');
+                }
+            });
+        }
+    };
+
+    initNavbar();
+
+    document.addEventListener('astro:page-load', initNavbar);
+</script>
