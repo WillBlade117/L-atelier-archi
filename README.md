@@ -18,32 +18,6 @@ Ce projet utilise les dernières technologies web pour garantir performance et m
 
 ---
 
-## 🚀 Démarrage Rapide (Local)
-
-Pour lancer le projet sur votre machine :
-
-1.  **Cloner le projet :**
-    ```bash
-    git clone <votre-repo-url>
-    cd l-atelier-archi
-    ```
-
-2.  **Installer les dépendances :**
-    ```bash
-    npm install
-    ```
-
-3.  **Lancer le serveur de développement :**
-    ```bash
-    npm run dev
-    ```
-
-4.  **Accéder au site :**
-    * Site web : `http://localhost:4321`
-    * Administration : `http://localhost:4321/keystatic`
-
----
-
 ## 📝 Gestion du Contenu (CMS)
 
 Le site intègre **Keystatic**, un CMS qui écrit directement les fichiers dans le dépôt Git.
