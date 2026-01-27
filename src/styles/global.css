@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Lato", sans-serif;
+
+  --color-primary-900: #0f172a;
+  --color-primary-800: #1e293b;
+  
+  --color-accent-gold: #d4af37;
+  --color-accent-sand: #f5f5dc;
+
+  --background-image-noise: url('/noise.png');
+}
+
+body {
+  @apply bg-primary-900 text-gray-200 font-sans antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-serif;
+}
+
+::selection {
+  @apply bg-accent-gold text-primary-900;
+}

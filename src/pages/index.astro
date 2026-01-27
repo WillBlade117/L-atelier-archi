@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+// L'outil pour récupérer le contenu
+import { getCollection } from 'astro:content';
+
+const allProjects = await getCollection('projects');
+
+// (Optionnel) Tri par date (le plus récent en premier)
+const sortedProjects = allProjects.sort((a, b) => b.data.completionDate.valueOf() - a.data.completionDate.valueOf());
+---
+
+<Layout title="Accueil">
+	<main>
+		<Hero />
+		
+        <section id="projets" class="py-24 px-6 md:px-12 bg-primary-800">
+            <div class="max-w-screen-2xl mx-auto">
+                
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                    <div>
+                        <span class="text-accent-gold uppercase tracking-widest text-sm font-bold">Portfolio</span>
+                        <h2 class="text-4xl md:text-5xl text-white mt-2 font-serif">Dernières Réalisations</h2>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    {sortedProjects.map((project) => (
+                        <ProjectCard project={project} />
+                    ))}
+
+                    {sortedProjects.length === 0 && (
+                        <p class="text-white text-xl">Aucun projet pour le moment. Allez dans l'admin pour en créer un !</p>
+                    )}
+                    
+                </div>
+            </div>
+        </section>
+
+	</main>
+</Layout>
