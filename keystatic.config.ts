@@ -7,7 +7,7 @@ export default config({
   storage: import.meta.env.PROD
     ? {
         kind: 'github',
-        repo: 'WillBlade117/L-atelier-archi',
+        repo: 'willblade117/l-atelier-archi',
       }
     : {
         kind: 'local',
