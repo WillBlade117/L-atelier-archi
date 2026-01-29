@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import keystatic from '@keystatic/astro';
 import react from '@astrojs/react';
-
+import node from '@astrojs/node';
 import markdoc from '@astrojs/markdoc';
 
 export default defineConfig({
@@ -14,5 +14,8 @@ export default defineConfig({
   
   integrations: [react(), keystatic(), markdoc()],
 
-  output: 'static',
+  output: 'hybrid',
+  adapter: node({
+    mode: 'standalone',
+  }),
 });

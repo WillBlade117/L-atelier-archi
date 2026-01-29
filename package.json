@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@astrojs/markdoc": "^0.15.10",
+    "@astrojs/node": "^9.5.2",
     "@astrojs/react": "^4.4.2",
     "@fontsource/lato": "^5.2.7",
     "@fontsource/playfair-display": "^5.2.8",
