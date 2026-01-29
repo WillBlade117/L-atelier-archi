@@ -2,12 +2,12 @@ import { config, fields, collection } from '@keystatic/core';
 
 export default config({
   // SÉCURITÉ : 
-  // En PROD (site en ligne), on force la connexion GitHub.
-  // En DEV (sur ton PC), on reste en mode local sans mot de passe.
+  // En PROD, on force la connexion GitHub.
+  // En DEV, on reste en mode local sans mot de passe.
   storage: import.meta.env.PROD
     ? {
         kind: 'github',
-        repo: 'TON_PSEUDO/TON_REPO', // ⚠️ On remplacera ça quand on mettra en ligne
+        repo: 'WillBlade117/L-atelier-archi', // ⚠️ On remplacera ça quand on mettra en ligne
       }
     : {
         kind: 'local',
