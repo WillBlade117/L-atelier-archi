@@ -6,6 +6,9 @@ import node from '@astrojs/node';
 import markdoc from '@astrojs/markdoc';
 
 export default defineConfig({
+
+  site: 'https://l-atelier-archi.william-sart.fr',
+
   vite: {
     plugins: [
       tailwindcss(),
@@ -14,7 +17,7 @@ export default defineConfig({
   
   integrations: [react(), keystatic(), markdoc()],
 
-  output: 'hybrid',
+  output: 'static',
   adapter: node({
     mode: 'standalone',
   }),
