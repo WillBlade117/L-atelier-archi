@@ -4,10 +4,13 @@ export default config({
   // SÉCURITÉ : 
   // En PROD, on force la connexion GitHub.
   // En DEV, on reste en mode local sans mot de passe.
-  storage: import.meta.env.PROD
+storage: import.meta.env.PROD
     ? {
         kind: 'github',
-        repo: 'willblade117/l-atelier-archi',
+        repo: {
+          owner: 'WillBlade117',
+          name: 'L-atelier-archi',
+        },
       }
     : {
         kind: 'local',
