@@ -2,23 +2,18 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import keystatic from '@keystatic/astro';
 import react from '@astrojs/react';
-import node from '@astrojs/node';
 import markdoc from '@astrojs/markdoc';
+import vercel from '@astrojs/vercel/serverless';
 
 export default defineConfig({
-
-  site: 'https://l-atelier-archi.william-sart.fr',
-
+  
   vite: {
-    plugins: [
-      tailwindcss(),
-    ],
+    plugins: [tailwindcss()],
   },
   
+  output: 'server',
+
   integrations: [react(), keystatic(), markdoc()],
 
-  output: 'static',
-  adapter: node({
-    mode: 'standalone',
-  }),
+  adapter: vercel(),
 });
