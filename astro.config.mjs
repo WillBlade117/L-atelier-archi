@@ -6,6 +6,8 @@ import markdoc from '@astrojs/markdoc';
 import vercel from '@astrojs/vercel';
 
 export default defineConfig({
+  site: 'https://l-atelier-archi.vercel.app',
+  
   vite: {
     plugins: [tailwindcss()],
   },
