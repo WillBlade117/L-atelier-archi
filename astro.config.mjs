@@ -6,7 +6,7 @@ import markdoc from '@astrojs/markdoc';
 import vercel from '@astrojs/vercel/serverless';
 
 export default defineConfig({
-  site: 'https://l-atelier-archi.vercel.app',
+  // site: 'https://l-atelier-archi.vercel.app',
 
   output: 'server',
 
