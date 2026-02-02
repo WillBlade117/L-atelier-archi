@@ -7,7 +7,7 @@ import vercel from '@astrojs/vercel';
 
 export default defineConfig({
   site: 'https://l-atelier-archi.vercel.app',
-  
+
   vite: {
     plugins: [tailwindcss()],
   },
@@ -16,7 +16,11 @@ export default defineConfig({
 
   integrations: [react(), keystatic(), markdoc()],
 
-  adapter: vercel(),
+  adapter: vercel({
+      isr: {
+        expiration: 60, 
+      }
+  }),
   
   security: {
     checkOrigin: false,
