@@ -16,13 +16,5 @@ export default defineConfig({
 
   integrations: [react(), keystatic(), markdoc()],
 
-  adapter: vercel({
-      isr: {
-        expiration: 60, 
-      }
-  }),
-  
-  security: {
-    checkOrigin: false,
-  },
+  adapter: vercel(),
 });
