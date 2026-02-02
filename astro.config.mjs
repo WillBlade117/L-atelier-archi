@@ -6,14 +6,17 @@ import markdoc from '@astrojs/markdoc';
 import vercel from '@astrojs/vercel';
 
 export default defineConfig({
-  
   vite: {
     plugins: [tailwindcss()],
   },
-  
+
   output: 'server',
 
   integrations: [react(), keystatic(), markdoc()],
 
   adapter: vercel(),
+  
+  security: {
+    checkOrigin: false,
+  },
 });
