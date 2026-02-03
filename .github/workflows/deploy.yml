@@ -1,33 +1,36 @@
 name: Deploy to o2switch
-
 on:
   push:
     branches:
       - main
-
 jobs:
   web-deploy:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
-      - name: Get latest code
+      - name: Récupérer le code
         uses: actions/checkout@v4
 
-      - name: Use Node.js 20
+      - name: Installer Node 20
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Install & Build
+      - name: Installer et Construire
         run: |
           npm ci
           npm run build
 
-      - name: Sync files to o2switch
+      - name: Préparer le redémarrage
+        run: |
+          mkdir -p dist/tmp
+          date > dist/tmp/restart.txt
+
+      - name: Envoyer les fichiers (FTP)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: l-atelier-archi/dist/
+          server-dir: l-atelier-archi/
           local-dir: ./dist/
